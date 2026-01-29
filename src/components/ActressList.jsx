@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const endpoint = "https://lanciweb.github.io/demo/api/actresses/"
 
@@ -13,14 +13,18 @@ function ActressList() {
         axios.get(endpoint)
             .then((res) => console.log(res.data))
             .catch(err => console.error("errore richiesta"))
-    }   
+    }
     // uso la funzione per vedere l'array in console
-    fetchActress()
+    // fetchActress()
+    // con useEffect posso decidere quando effettuare la chiamata e quindi eseguire fetchActress
+    useEffect(() => {
+        fetchActress();
+    }, []);
 
     return (
         <h3>Guarda console!</h3>
-        
-  )
+
+    )
 }
 
 export default ActressList
